@@ -39,7 +39,7 @@ class LTXVLoader:
     OUTPUT_NODE = False
 
     def load(self, ckpt_name, dtype):
-        dtype_map = {"bfloat16": torch.bfloat16, "float32": torch.float32}
+        dtype_map = {"bfloat16": torch.bfloat16, "float32": torch.float32, "float16":torch.float16}
         load_device = comfy.model_management.get_torch_device()
         offload_device = comfy.model_management.unet_offload_device()
 
