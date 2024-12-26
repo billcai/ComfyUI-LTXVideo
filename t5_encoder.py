@@ -143,7 +143,7 @@ class LTXVCLIPModelLoader:
 
         clip_target = comfy.supported_models_base.ClipTarget(
             tokenizer=ltxv_tokenizer(tokenizer_path),
-            clip=ltxv_clip(encoder_path, dtype_t5=torch.bfloat16),
+            clip=ltxv_clip(encoder_path, dtype_t5=torch.float16),
         )
 
         return (comfy.sd.CLIP(clip_target),)
