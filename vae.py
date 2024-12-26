@@ -27,7 +27,7 @@ class LTXVVAE(comfy.sd.VAE):
         self.seed = seed
 
     @classmethod
-    def from_pretrained(cls, vae_class, model_path, dtype=torch.bfloat16):
+    def from_pretrained(cls, vae_class, model_path, dtype=torch.float16):
         instance = cls()
         model = vae_class.from_pretrained(
             pretrained_model_name_or_path=model_path,
@@ -40,7 +40,7 @@ class LTXVVAE(comfy.sd.VAE):
 
     @classmethod
     def from_config_and_state_dict(
-        cls, vae_class, config, state_dict, dtype=torch.bfloat16
+        cls, vae_class, config, state_dict, dtype=torch.float16
     ):
         instance = cls()
         model = vae_class.from_config(config)
@@ -109,7 +109,7 @@ class LTXVVAE(comfy.sd.VAE):
         preprocessed = self.image_processor.preprocess(
             pixel_samples.permute(3, 0, 1, 2)
         )
-        input = preprocessed.unsqueeze(0).to(torch.bfloat16).to(self.device)
+        input = preprocessed.unsqueeze(0).to(torch.float16).to(self.device)
         latents = vae_encode(
             input, self.first_stage_model, vae_per_channel_normalize=True
         ).to(comfy.model_management.get_torch_device())
