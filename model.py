@@ -166,7 +166,7 @@ class LTXVTransformer3D(nn.Module):
         latent_patchified = self.patchifier.patchify(latent)
 
         if mixed_precision:
-            context_manager = torch.autocast("cuda", dtype=torch.bfloat16)
+            context_manager = torch.autocast("cuda", dtype=torch.float16)
         else:
             context_manager = nullcontext()
         with context_manager:
