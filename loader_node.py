@@ -29,7 +29,7 @@ class LTXVLoader:
                     folder_paths.get_filename_list("checkpoints"),
                     {"tooltip": "The name of the checkpoint (model) to load."},
                 ),
-                "dtype": (["bfloat16", "float32"], {"default": "bfloat16"}),
+                "dtype": (["bfloat16", "float32", "float16"], {"default": "bfloat16"}),
             }
         }
 
